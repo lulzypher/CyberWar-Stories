@@ -124,7 +124,7 @@ a battle of alpha and omega
 
 Gog and Magog (/ˈɡoʊɡ ... ˈmɑːɡoʊɡ/; Hebrew: גּוֹג וּמָגוֹג, Gōg ū-Māgōg) appear in the Hebrew Bible and the Quran as individuals, tribes, or lands. In Ezekiel 38, Gog is an individual and Magog is his land;[1] in Genesis 10, Magog is a man and eponymous ancestor of a nation, but no Gog is mentioned; and centuries later Jewish tradition changed Ezekiel's "Gog from Magog" into "Gog and Magog"[2].
 
-The Gog prophecy is meant to be fulfilled at the approach of what is called the "end of days ", but not necessarily the end of the world. Jewish eschatology viewed Gog and Magog as enemies to be defeated by the Messiah, which would usher in the age of the Messiah. Christianity's interpretation is more starkly apocalyptic: making Gog and Magog, here indicating nations rather than individuals,[3] allies of Satan against God at the end of the millennium, as described in the Book of Revelation.
+The Gog prophecy is meant to be fulfilled at the approach of what is called the "end of days ", but not necessarily the end of the world. Jewish eschatology viewed Gog and Magog as enemies to be defeated by the Messiah, which would usher in the age of the Messiah. Christianity's interpretation is more starkly apocalyptic: making Gog and Magog, here indicating nations rather than individuals, allies of Satan against God at the end of the millennium, as described in the Book of Revelation.
 
 The number e, also known as Euler's number, is a mathematical constant approximately equal to 2.71828,
 and can be characterized in many ways. It is the base of the natural logarithms.
@@ -141,7 +141,7 @@ The imaginary unit or unit imaginary number (i) is a solution to the quadratic e
 
 2 + 3i is at the core the quantum block funtion.
 
-Imaginary numbers are an important mathematical concept, which extend the real number system {R} to the complex number system {C} , in which at least one root for every nonconstant polynomial exists (see Algebraic closure and Fundamental theorem of algebra). Here, the term "imaginary" is used because there is no real number having a negative square.
+Imaginary numbers are an important mathematical concept, which extend the real number system {R} to the complex number system {C} , in which at least one root for every nonconstant polynomial exists (see Algebraic closure and Fundamental theorem of algebra). Here, the term "imaginary" is used because there is no real number having a negative square. That channel is asking if its real of not True/False and when you know the Gobal chain for if its true or false, j dies on that cross.
 
 There are two complex square roots of −1, namely i and −i, just as there are two complex square roots of every real number other than zero (which has one double square root).
 
