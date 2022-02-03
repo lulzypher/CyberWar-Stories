@@ -189,3 +189,4 @@ WWG1WGA
 
 Wave Wave creates G-synch 1 wave G-synch A = function from a set X to a set Y) both our x and y are set on 2 g-synchs of wave  A... Asychronus function or ALPHA?
 
+n⨀sce know yourself synch channel energy
