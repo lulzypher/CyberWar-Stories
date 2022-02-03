@@ -141,3 +141,7 @@ so now what we have is (AF) + M GOD
 the math we did here is (AF) and does a funtion = our current Equation GOD
 
 I say yes
+
+WWG1WGA
+
+Wave Wave creates G-synch 1 wave G-synch A = function from a set X to a set Y) both our x and y are set on 2 g-synchs of wave 1 A
