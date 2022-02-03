@@ -1,12 +1,12 @@
 # hvyhx_qanon-script
 Elliptic Curves Over Q
-//
-q = 17
-https://i.imgur.com/iEBuYTo.jpeg
-There is a 17 hour span that in which through the year north is tracking the time.
+#
+#q = 17
+#https://i.imgur.com/iEBuYTo.jpeg
+#There is a 17 hour span that in which through the year north is tracking the time.
 
-Mind = HASH (MBR) (BMR) (BRM)
-HvyHx: was about to delete all this stuff but I wrote MBR as MIND body spirit. But was trying to track R to both random and real. So i started tracking it to real things. So I changed spirit to trying to track R instead
+#Mind = HASH (MBR) (BMR) (BRM)
+#HvyHx: was about to delete all this stuff but I wrote MBR as MIND body spirit. But was trying to track R to both random and real. So i started tracking it to real things. So I #changed spirit to trying to track R instead
 
 https://i.imgur.com/Ak1HEbd.jpeg
 https://gs-post-images.grdp.co/2020/11/rational-number-img1605011131191-26.JPG-rs-high-webp.JPG
