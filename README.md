@@ -10,6 +10,16 @@ https://i.imgur.com/Ak1HEbd.jpeg
 
 https://gs-post-images.grdp.co/2020/11/rational-number-img1605011131191-26.JPG-rs-high-webp.JPG
 
+Quantum Theory of Atoms
+For a particle in a cubic or rectangular box, Cartesian coordinates are more appropriate and there are three quantum numbers (n1,n2,n3) needed to label a quantum state
+similarly in spherical coordinates, there are also three quantum numbers needed
+n = 1, 2, 3, …..
+l= 0, 1, 2, …,n-1 => n values of l for a given value of n
+m= -l,(-l+1),…0,1,2,…,l => 2l+1 values of m for a given l
+n is the principal quantum number and is associated with the distance r of an electron from the nucleus
+l is the orbital quantum number and the angular momentum of the electron is given by L=[l(l+1)]1/2 h
+m is the magnetic quantum number and the component of the angular momentum along the z-axis is Lz = m h
+
 Mind = Int
 Body = x
 spirit = y
