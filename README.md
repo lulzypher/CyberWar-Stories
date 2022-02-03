@@ -178,7 +178,7 @@ Message◦master G
 
  The domain of g(x) is the set of all real numbers. Also, g(g(x)) is defined for the set of all real numbers.
  The x-axis and y-axis are axes in the Cartesian coordinate system
-
+A Cartesian coordinate system (UK: /kɑːˈtiːzjən/, US: /kɑːrˈtiʒən/) in a plane is a coordinate system that specifies each point uniquely by a pair of numerical coordinates, which are the signed distances to the point from two fixed perpendicular oriented lines, measured in the same unit of length. Each reference line is called a coordinate axis or just axis (plural axes) of the system, and the point where they meet is its origin, at ordered pair (0, 0). The coordinates can also be defined as the positions of the perpendicular projections of the point onto the two axes, expressed as signed distances from the origin.
  AES syncs to a the (A(e))S
 
 AES is the alpha pinned to the Omega by copying itself with itself.
