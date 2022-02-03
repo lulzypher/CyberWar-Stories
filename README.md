@@ -131,3 +131,13 @@ Message◦master G
  The x-axis and y-axis are axes in the Cartesian coordinate system
 
  AES syncs to a the E
+
+I AM GOD
+
+I=() A= AF
+
+so now what we have is (AF) + M GOD
+
+the math we did here is (AF) and does a funtion = our current Equation GOD
+
+I say yes
