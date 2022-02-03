@@ -42,6 +42,35 @@ i= Math funtion
 
 M = The capital O in Maths is used to represent the null matrix, where all elements are zero... aka on the Cartesian coordinate system
 https://i.imgur.com/vIvCQKg.png
+https://en.bitcoin.it/wiki/Transaction
+0 <sig1> <sig2> OP_2 <pubKey1> <pubKey2> <pubKey3> OP_3 OP_CHECKMULTISIG
+https://protocol.0x.org/en/latest/architecture/proxy.html
+The ZeroEx contract comes pre-loaded with only one Feature: Bootstrap. This exposes a bootstrap() function that can only be called by the deployer. This function does a few things:
+
+De-register the bootstrap() function, which prevents it being called again.
+
+Self-destruct.
+
+Delegatecall the bootstrapper target contract and call data.
+
+Run rippled as a Validator
+A rippled server running in validator mode does everything a stock server does:
+
+Connects to a network of peers
+
+Relays cryptographically signed transactions
+
+Maintains a local copy of the complete shared global ledger
+
+What makes a validator different is that it also issues validation messages, which are sets of candidate transactions for evaluation by the XRP Ledger network during the consensus process.
+
+It's important to understand that merely issuing validation messages does not automatically give your validator a say in the consensus process. Other servers ignore your validation messages unless they add your validator to their Unique Node List (UNL). If your validator is included in a UNL, it is a trusted validator and its proposals are considered in the consensus process by the servers that trust it.
+
+Even if your validator isn't a trusted validator, it stills plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.
+
+https://www.reddit.com/r/CryptoCurrency/comments/ny6h7x/an_alternative_way_to_attack_the_xrp_ledger/
+https://twitter.com/Mudit__Gupta/status/1489146558201229314?fbclid=IwAR0PFxrINi93vwN-R9dE0amy0una0w98IcUkQ-YYFoWWRlncIenPJoAI19Y
+
 
 I ((I)(M)) GOD
 so our Math is at a function that is set to zero
@@ -50,11 +79,12 @@ y is usually the domain and x is the target
 y = D (direction/domain)
   or
 y=f(x)
-Our agreed  funtion would be a funtion targeting a funtion.
-But what we are getting here is A = functions where Y and X meet on the cartesian coordinate system that call out itself a funtion that returns a number that represent the null matrix
+Our agreed function would be a function targeting a function. 
+
+But what we are getting here is A = function where Y and X meet on the cartesian coordinate system that call out itself in a funtion that returns a number that represent the null matrix which is the total sum.
 https://en.wikipedia.org/wiki/Cartesian_coordinate_system
 
-a ring funtion its calls upon itself as the Global O Domain/Direction
+a ring function its calls upon itself as the Global O Domain/Direction
 
 Ring theoretic properties of quantum grassmannians
 A C Kelly, T H Lenagan, L Rigal
@@ -116,7 +146,7 @@ a is an O containing an "Alpha" @ E is the battle of Entropy/Extropy
 
 extropy
 the pseudoscientific principle that life will expand indefinitely and in an orderly, progressive way throughout the entire universe by the means of human intelligence and technology.
-VS
+VS 
 Entropy
 a thermodynamic quantity representing the unavailability of a system's thermal energy for conversion into mechanical work, often interpreted as the degree of disorder or randomness in the system.
 
@@ -176,6 +206,21 @@ $D$
 
 Message◦master G
 
+Cryptographic Keys
+In the XRP Ledger, a digital signature authorizes a transaction to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
+
+To make a digital signature, you use a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported cryptographic signing algorithms. A key pair can be used as a master key pair, regular key pair or a member of a signer list, regardless of what algorithm was used to generate it.
+
+Warning: It is important to maintain proper security over your cryptographic keys. Digital signatures are the only way of authorizing transactions in the XRP Ledger, and there is no privileged administrator who can undo or reverse any transactions after they have applied. If someone else knows the seed or private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
+
+Generating Keys
+Many client libraries and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use keypairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
+
+Key Components
+A cryptographic key pair is a private key and a public key that are connected mathematically through a key derivation process. Each key is a number; the private key should be chosen using a strong source of randomness. The cryptographic signing algorithm defines the key derivation process and sets constraints on the numbers that can be cryptographic keys.
+
+When dealing with the XRP Ledger, you may also use some related values such as a passphrase, seed, account ID, or address.
+  
  The domain of g(x) is the set of all real numbers. Also, g(g(x)) is defined for the set of all real numbers.
  The x-axis and y-axis are axes in the Cartesian coordinate system
 A Cartesian coordinate system (UK: /kɑːˈtiːzjən/, US: /kɑːrˈtiʒən/) in a plane is a coordinate system that specifies each point uniquely by a pair of numerical coordinates, which are the signed distances to the point from two fixed perpendicular oriented lines, measured in the same unit of length. Each reference line is called a coordinate axis or just axis (plural axes) of the system, and the point where they meet is its origin, at ordered pair (0, 0). The coordinates can also be defined as the positions of the perpendicular projections of the point onto the two axes, expressed as signed distances from the origin.
