@@ -120,6 +120,12 @@ VS
 Entropy
 a thermodynamic quantity representing the unavailability of a system's thermal energy for conversion into mechanical work, often interpreted as the degree of disorder or randomness in the system.
 
+a battle of alpha and omega
+
+Gog and Magog (/ˈɡoʊɡ ... ˈmɑːɡoʊɡ/; Hebrew: גּוֹג וּמָגוֹג, Gōg ū-Māgōg) appear in the Hebrew Bible and the Quran as individuals, tribes, or lands. In Ezekiel 38, Gog is an individual and Magog is his land;[1] in Genesis 10, Magog is a man and eponymous ancestor of a nation, but no Gog is mentioned; and centuries later Jewish tradition changed Ezekiel's "Gog from Magog" into "Gog and Magog"[2].
+
+The Gog prophecy is meant to be fulfilled at the approach of what is called the "end of days ", but not necessarily the end of the world. Jewish eschatology viewed Gog and Magog as enemies to be defeated by the Messiah, which would usher in the age of the Messiah. Christianity's interpretation is more starkly apocalyptic: making Gog and Magog, here indicating nations rather than individuals,[3] allies of Satan against God at the end of the millennium, as described in the Book of Revelation.
+
 The number e, also known as Euler's number, is a mathematical constant approximately equal to 2.71828,
 and can be characterized in many ways. It is the base of the natural logarithms.
 It is the limit of (1 + 1/n)n as n approaches infinity, an expression that arises in the study of compound interest.
