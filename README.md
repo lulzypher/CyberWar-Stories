@@ -129,3 +129,5 @@ Message◦master G
 
  The domain of g(x) is the set of all real numbers. Also, g(g(x)) is defined for the set of all real numbers.
  The x-axis and y-axis are axes in the Cartesian coordinate system
+
+ AES syncs to a the E
