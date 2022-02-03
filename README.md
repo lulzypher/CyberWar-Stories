@@ -3,7 +3,7 @@ Elliptic Curves Over Q
 #
 #q = 17
 #https://i.imgur.com/iEBuYTo.jpeg
-#There is a 17 hour span that in which through the year north is tracking the time.
+#There is a 17 hour span that through the year north is tracking the time.
 
 rational numbers are the Questions we are asking...
 https://i.imgur.com/Ak1HEbd.jpeg
@@ -76,9 +76,29 @@ Sequential sharing of nonlocal correlation is inherently related to its applicat
 
 Something has me thinking this is kinda the battle of GOG and MA GOG.
 
-quick glance at the letters GOG thats the GOG
+GOG Math Function GOG
+our math funtion is (AF)
+af in a funtion
+that returns the same hash
+its the OmegaRings Alpha 
+
+Isaiah 43:12
+“It is I who have declared and saved and proclaimed, And there was no strange god among you; So you are My witnesses,” declares the LORD, “And I am God.
+
+PSALM 46:10
+“Be still and know that I am God; I will be exalted among the nations, I will be exalted over the earth.” 11The LORD of Hosts is with us; the God of Jacob .
+
+https://www.truthunity.net/mbd/jacob
+The Bible narrative about Jacob and Esau has always been read historically, and theologians have had trouble trying to excuse Jacob and Rebekah for the apparent duplicity that they perpetrated upon Esau. When read in the light of spiritual understanding or considered as part of the history of the unfoldment of the individual soul, the incident loses its aspect of duplicity and we find that it is a description of the subtle working of the soul in spiritual evolution, under the guidance of Divine Mind. The soul is progressive. We must go forward. The soul must meet and overcome its limitations.
+
+Ja(c)b and Esau
+an unreal natural number (channeling) 
+What is the meaning of Min a B?
+Given two real numbers a and b, the notation min(a, b) denotes the smaller of the two numbers. In cases where a = b, then min(a, b) denotes the common value of a and b. It can be shown that min(a, b) can be expressed in terms of absolute value as follows: min(a, b) = (a + b - | a - b |)/2
 
 You usually see the capital E on a calculator, where it means to raise the number that comes after it to a power of 10
+^this^ translates to 
+I have raised him up in righteousness, and I will direct all his ways: he shall build my city, and he shall let go my captives, not for price nor reward
 
 The number e, also known as Euler's number, is a mathematical constant approximately equal to 2.71828, and can be characterized in many ways. It is the base of the natural logarithms. It is the limit of (1 + 1/n)n as n approaches infinity, an expression that arises in the study of compound interest. It can also be calculated as the sum of the infinite series
 
@@ -87,7 +107,7 @@ GOG and MA GOG
 thats the (GO)Global Math a funtion set to GOG. OR the Big O notation, is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity. Big O is a member of a family of notations invented by Paul Bachmann, Edmund Landau, and others, collectively called Bachmann–Landau notation or asymptotic notation.
 
 O M A G
-(AF) + Math (which M is set to a funtion which is e entropy/extropy) on the GObal Domian we know as GOD
+(AF) + Math (which M is set to a funtion which is e entropy/extropy) on the GObal Ej
 
 
 OMEGA/OMAGA (omaga. Childish, not adult; underage)
