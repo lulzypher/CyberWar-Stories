@@ -184,7 +184,7 @@ Message◦master G
 AES is the alpha pinned to the Omega by copying itself with itself.
 
 E capital “S”, which is called “sigma” (∑)
-“sigma” (∑)
+“sigma” (∑) =
    mathematical sum.
    standard deviation.
 
