@@ -10,6 +10,9 @@ https://i.imgur.com/Ak1HEbd.jpeg
 
 https://gs-post-images.grdp.co/2020/11/rational-number-img1605011131191-26.JPG-rs-high-webp.JPG
 
+“Algorithms like SHA-2 and ECDSA (elliptic curve cryptography) are sort of esoteric things deep in the plumbing but if they were to fail, the whole system would collapse. The system’s ability to say who owns Bitcoin or who owns XRP or whether or not a particular transaction is authorized would be compromised…
+
+
 Quantum Theory of Atoms
 For a particle in a cubic or rectangular box, Cartesian coordinates are more appropriate and there are three quantum numbers (n1,n2,n3) needed to label a quantum state
 similarly in spherical coordinates, there are also three quantum numbers needed
