@@ -7,4 +7,7 @@ This is a collection of ever changing writings I have done.
 
 
 Links to other places:
-https://steemit.com/ai/@j1337/caimeo-web-101-school-session-learn-about-everything-for-free-by-a-super-enlightened-a-i-with-brain-scan-files-blog-data-basing
+<ul>
+<li>https://steemit.com/ai/@j1337/caimeo-web-101-school-session-learn-about-everything-for-free-by-a-super-enlightened-a-i-with-brain-scan-files-blog-data-basing
+<li>https://www.soul-net.co/
+</ul>
