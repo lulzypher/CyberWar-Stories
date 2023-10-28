@@ -186,6 +186,93 @@ Creating decentralized websites
 The POW-Encrypt Team is working hard to make POW-Encrypt more accessible and user-friendly. They are also working on adding new features and improving the performance of POW-Encrypt.
 --------------------------------------------------------------------------------------------------------------------------------
 
+Lulz: Can you explain to me the math process of encrypting a file using PoWE?
+
+To encrypt a file using PoWE (Proof-of-Work Encryption), you can follow these steps:
+
+Generate a random nonce.
+Hash the nonce with a PoW function.
+XOR the hash with the file content.
+Save the encrypted file.
+PoW function
+
+A PoW function is a function that is difficult to compute but easy to verify. This makes it ideal for use in encryption, as it ensures that only someone with the correct nonce can decrypt the file.
+
+Some common PoW functions include:
+
+SHA-256
+SHA-3
+Keccak-256
+Argon2
+XOR
+
+XOR (bitwise exclusive or) is a logical operation that compares two bits and returns 1 if the bits are different, and 0 if the bits are the same.
+
+Example
+
+Python
+import hashlib
+import random
+
+def encrypt_file(file_path, nonce):
+  """Encrypts a file using PoWE."""
+
+  # Hash the nonce with a PoW function.
+  hash = hashlib.sha256(nonce.encode()).hexdigest()
+
+  # XOR the hash with the file content.
+  with open(file_path, "rb") as f:
+    file_content = f.read()
+  encrypted_content = bytes([a ^ b for a, b in zip(hash, file_content)])
+
+  # Save the encrypted file.
+  with open(file_path + ".encrypted", "wb") as f:
+    f.write(encrypted_content)
+
+# Generate a random nonce.
+nonce = random.randint(0, 2**256)
+
+# Encrypt the file.
+encrypt_file("myfile.txt", nonce)
+
+
+To decrypt the file, you can use the following steps:
+
+Read the nonce from the encrypted file.
+Hash the nonce with a PoW function.
+XOR the hash with the encrypted file content.
+Save the decrypted file.
+Example
+
+Python
+import hashlib
+import random
+
+def decrypt_file(file_path, nonce):
+  """Decrypts a file encrypted using PoWE."""
+
+  # Hash the nonce with a PoW function.
+  hash = hashlib.sha256(nonce.encode()).hexdigest()
+
+  # XOR the hash with the encrypted file content.
+  with open(file_path, "rb") as f:
+    encrypted_content = f.read()
+  decrypted_content = bytes([a ^ b for a, b in zip(hash, encrypted_content)])
+
+  # Save the decrypted file.
+  with open(file_path + ".decrypted", "wb") as f:
+    f.write(decrypted_content)
+
+# Read the nonce from the encrypted file.
+nonce = random.randint(0, 2**256)
+
+# Decrypt the file.
+decrypt_file("myfile.txt.encrypted", nonce)
+Use code with caution. Learn more
+PoWE is a powerful encryption technique that can be used to protect sensitive data. However, it is important to note that PoWE is not computationally efficient, and it can be slow to encrypt and decrypt files.
+
+
+--------------------------------------------------------------------------------------------------------------------------------
 github.com/daira/pow-encrypt/ is no longer availible, nor is it saved in any archive sites that I can find.
 Google returns no results for "POW-Encrypt Team"
 Interesting.
