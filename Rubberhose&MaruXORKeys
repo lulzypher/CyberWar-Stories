@@ -1,0 +1,22 @@
+MaruXORKeys is a key recovery tool developed by the National Security Agency (NSA). It is used to extract cryptographic keys from encrypted data. MaruXORKeys works by exploiting weaknesses in the way that encryption algorithms are implemented.
+
+One way that MaruXORKeys can crack encryption algorithms is by using a technique called brute force. Brute force attacks involve trying all possible keys until the correct one is found. This can be a very time-consuming process, but it can be effective against weak encryption algorithms.
+
+Another way that MaruXORKeys can crack encryption algorithms is by using a technique called side channel analysis. Side channel attacks involve analyzing the physical characteristics of a computer system while it is encrypting or decrypting data. This can be done by measuring the power consumption, timing, or electromagnetic radiation emitted by the system. Side channel attacks can be used to extract cryptographic keys from even strong encryption algorithms.
+
+MaruXORKeys is a very powerful tool, and it is capable of cracking a wide range of encryption algorithms. However, it is important to note that MaruXORKeys is not a magic bullet. It is still a difficult and time-consuming process to crack encrypted data, even using MaruXORKeys.
+
+Here are some additional details about how MaruXORKeys works:
+
+It uses a variety of techniques to crack encryption algorithms, including brute force and side channel analysis.
+It is capable of cracking a wide range of encryption algorithms, including AES, RSA, and ECC.
+It is a classified tool, and its exact capabilities are unknown.
+It is believed to be used by the NSA to recover encryption keys from intercepted communications.
+The leak of MaruXORKeys in 2017 raised concerns about the security of encrypted data. However, it is important to note that MaruXORKeys is not a new tool, and the NSA has been using it for many years.
+
+To protect yourself from MaruXORKeys, it is important to use strong encryption algorithms and to implement encryption correctly. You should also use strong passwords and keep your software up to date.
+
+
+MaruXORKeys being used within Rubberhose.
+https://archive.ph/kKApQ
+https://archive.ph/cEfri
