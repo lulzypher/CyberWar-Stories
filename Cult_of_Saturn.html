@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HvyHx's Grimoire — DISK001 Field Guide</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #12121a;
+      --bg3: #1a1a26;
+      --gold: #c9a227;
+      --gold-dim: #8a7020;
+      --red: #8b2942;
+      --cyan: #4ecdc4;
+      --text: #e8e4dc;
+      --muted: #8a8698;
+      --border: #2a2a3a;
+      --glow: rgba(201, 162, 39, 0.15);
+      --cube: #1e1e2e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* subtle grid + vignette */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,162,39,0.06), transparent 60%),
+        radial-gradient(ellipse 100% 100% at 50% 100%, rgba(0,0,0,0.8), transparent 70%),
+        repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(42,42,58,0.3) 49px, rgba(42,42,58,0.3) 50px),
+        repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(42,42,58,0.3) 49px, rgba(42,42,58,0.3) 50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    header {
+      text-align: center;
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .cube-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--cube) 0%, #0d0d14 100%);
+      border: 2px solid var(--gold-dim);
+      transform: rotate(45deg);
+      box-shadow: 0 0 40px var(--glow), inset 0 0 20px rgba(0,0,0,0.5);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 30px var(--glow); }
+      50% { box-shadow: 0 0 60px rgba(201,162,39,0.25); }
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .meta-bar span {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(8px);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+
+    nav a:hover { color: var(--gold); border-color: var(--gold-dim); }
+
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 4rem;
+    }
+
+    h2 {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    h2::before {
+      content: "◆";
+      font-size: 0.6rem;
+      color: var(--red);
+    }
+
+    h3 {
+      font-size: 1rem;
+      color: var(--cyan);
+      margin: 1.5rem 0 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    p { margin-bottom: 1rem; color: var(--text); }
+
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card.highlight {
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 30px var(--glow);
+    }
+
+    .pw-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .pw-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      border-radius: 3px;
+      transition: border-color 0.2s;
+    }
+
+    .pw-item:hover { border-color: var(--gold-dim); }
+
+    .pw-item .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .pw-item .value {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 1.15rem;
+      color: var(--gold);
+      cursor: pointer;
+      user-select: all;
+    }
+
+    .pw-item .value:hover { text-decoration: underline; }
+
+    .pw-item .note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bg3);
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    tr:hover td { background: rgba(201,162,39,0.04); }
+
+    code, .mono {
+      font-family: "Consolas", monospace;
+      background: var(--bg3);
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+      font-size: 0.88em;
+      color: var(--cyan);
+    }
+
+    a { color: var(--cyan); }
+    a:hover { color: var(--gold); }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      margin-right: 0.35rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .tag-rar { background: #2a1a1a; color: #e88; border: 1px solid #5a3030; }
+    .tag-swf { background: #1a2a2a; color: #8dd; border: 1px solid #305a5a; }
+    .tag-key { background: #2a2a1a; color: #dd8; border: 1px solid #5a5a30; }
+    .tag-lore { background: #1a1a2a; color: #aaf; border: 1px solid #30305a; }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .flow-step {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      border-radius: 3px;
+    }
+
+    .flow-arrow { color: var(--gold-dim); font-size: 1.2rem; }
+
+    .room-hub {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      max-width: 420px;
+      margin: 1rem auto;
+    }
+
+    .room-cell {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.75rem;
+      text-align: center;
+      font-family: monospace;
+      font-size: 0.85rem;
+    }
+
+    .room-cell.hub {
+      grid-column: 2;
+      border-color: var(--red);
+      color: #e88;
+    }
+
+    .room-cell.pair { border-color: var(--gold-dim); color: var(--gold); }
+
+    .search-box {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.65rem 1rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      margin-bottom: 1rem;
+      border-radius: 3px;
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: var(--gold-dim);
+    }
+
+    .cred-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .cred-chip {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: var(--gold);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.15s;
+    }
+
+    .cred-chip:hover {
+      border-color: var(--gold);
+      background: rgba(201,162,39,0.08);
+    }
+
+    .cred-chip.hidden { display: none; }
+
+    .quote {
+      border-left: 3px solid var(--red);
+      padding: 0.75rem 1.25rem;
+      margin: 1rem 0;
+      background: rgba(139,41,66,0.08);
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--gold);
+      color: var(--bg);
+      padding: 0.6rem 1.25rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.1em;
+    }
+
+    .primer {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 2rem 2rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .primer-lead { font-size: 1.05rem; line-height: 1.75; margin-bottom: 1rem; }
+    .primer h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; font-size: 1.35rem; }
+    .primer h2::before { content: none; }
+    .primer ul, .primer ol { margin: 0 0 1rem 1.25rem; }
+    .primer li { margin-bottom: 0.45rem; }
+    .primer hr { border: none; border-top: 1px solid var(--border); margin: 1.75rem 0; }
+
+    .primer-summary {
+      background: var(--bg3);
+      border: 1px solid var(--gold-dim);
+      padding: 1rem 1.25rem;
+      border-radius: 3px;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+
+    .primer-not { font-size: 0.9rem; color: var(--muted); }
+    .primer-not ul { color: var(--muted); }
+
+    .egg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1rem;
+    }
+
+    .egg-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+    }
+
+    .egg-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 0.9rem;
+      color: var(--gold);
+    }
+
+    .egg-card ul {
+      margin: 0 0 0 1rem;
+      font-size: 0.88rem;
+    }
+
+    .egg-card li { margin-bottom: 0.4rem; color: var(--text); }
+
+    .egg-card .egg-src {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      font-family: monospace;
+    }
+
+    .tag-egg { background: #2a1a2a; color: #d8a; border: 1px solid #5a305a; }
+    .tag-troll { background: #2a2a1a; color: #cc8; border: 1px solid #5a5a30; }
+    .tag-meta { background: #1a2a2a; color: #8cc; border: 1px solid #305a5a; }
+    .tag-dead { background: #1a1a1a; color: #888; border: 1px solid #444; }
+
+    .redirect-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.4rem;
+    }
+
+    .redirect-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.65rem;
+      font-size: 0.78rem;
+      border-radius: 2px;
+    }
+
+    .redirect-item a { word-break: break-all; }
+    .redirect-item.hidden { display: none; }
+
+    .section-divider {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin: 2rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .walk-phase {
+      margin-bottom: 2.5rem;
+    }
+
+    .walk-phase-title {
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .walk-step {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 0 1.25rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .walk-step-num {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      color: var(--gold-dim);
+      line-height: 1;
+      text-align: center;
+      padding-top: 0.15rem;
+    }
+
+    .walk-step h4 {
+      font-size: 1rem;
+      color: var(--cyan);
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+    }
+
+    .walk-step p:last-child { margin-bottom: 0; }
+
+    .walk-find {
+      background: var(--bg3);
+      border-left: 3px solid var(--gold-dim);
+      padding: 0.65rem 0.85rem;
+      margin: 0.75rem 0;
+      font-size: 0.9rem;
+    }
+
+    .walk-find strong { color: var(--gold); }
+
+    .walk-next {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    .walk-next strong { color: var(--text); }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .tool-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      border-radius: 3px;
+      font-size: 0.88rem;
+    }
+
+    .tool-card .tool-name {
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    details.walk-advanced {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0;
+      font-size: 0.88rem;
+    }
+
+    details.walk-advanced summary {
+      cursor: pointer;
+      color: var(--muted);
+      user-select: none;
+    }
+
+    details.walk-advanced summary:hover { color: var(--cyan); }
+
+    details.walk-advanced[open] summary { margin-bottom: 0.75rem; color: var(--cyan); }
+
+    @media (max-width: 600px) {
+      .room-hub { grid-template-columns: 1fr 1fr; }
+      .room-cell.hub { grid-column: 1 / -1; }
+      .primer { padding: 1.25rem 1rem; }
+      .walk-step { grid-template-columns: 1fr; }
+      .walk-step-num { text-align: left; font-size: 1.5rem; margin-bottom: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="cube-icon" aria-hidden="true"></div>
+      <h1>HvyHx's Grimoire</h1>
+      <p class="subtitle">Field Guide · FalseProphet-HQ · Cult of Saturn · DISK001</p>
+      <div class="meta-bar">
+        <span>Source: /x/ #23689991</span>
+        <span>Archive cracked Jun 2026</span>
+        <span>28 SWF credentials</span>
+        <span>549 internal URLs mapped</span>
+      </div>
+    </header>
+
+    <section id="start" class="primer">
+      <h2>Start Here — Plain English Overview</h2>
+      <p class="primer-lead">What you have on this drive is a <strong>self-contained alternate-reality game (ARG)</strong> — or LARP packaged as research — built around <strong>FalseProphet-HQ</strong>, a website that was live for years and is now offline. The <code>/x/</code> thread and DISK001 dump are someone handing out the whole puzzle box.</p>
+      <p class="primer-lead">Three layers: <strong>the wrapper</strong> (this folder), <strong>the game</strong> (Flash SWF maze), and <strong>the ideas underneath</strong> (Cult of Saturn, Worlds.com, esoteric lore).</p>
+
+      <h3>The wrapper — what DISK001 is</h3>
+      <ul>
+        <li><strong>Cult of Saturn</strong> material — Frank Webster, Worlds.com, occult threads</li>
+        <li><strong>FalseProphet-HQ</strong> mirror — Flash <code>.swf</code> pages instead of normal HTML</li>
+        <li><strong>Side archives</strong> — poems, Worlds 2008, occult PDFs (<code>Books.rar</code>), Frank Webster dumps</li>
+      </ul>
+      <p>Passwords are thematic, not cryptographic. See the table in <a href="#rar">Archive Passwords</a>.</p>
+
+      <hr>
+
+      <h3>The game — how FalseProphet-HQ works</h3>
+      <p>Each URL was one <code>.swf</code> file. Intended flow:</p>
+      <ol>
+        <li><strong>login.swf</strong> — countdown + <code>oneeyedjack</code> → issue menu</li>
+        <li><strong>login-level2.swf</strong> — <code>masterkey</code> → deeper tier</li>
+        <li><strong>Issues 1–18 + issueX</strong> — newsletter chapters, puzzles, weird links</li>
+        <li><strong>Rooms</strong> — reversals (15↔51, 16↔61, 17↔71), <code>room666</code> hub</li>
+        <li><strong>Keys</strong> — <code>silverkey</code> → <code>goldkey</code> → <code>highkey</code>/<code>lowkey</code> → Book gates</li>
+      </ol>
+      <p>Wrong answers often redirect to cursed URLs (Time Cube, Jodi.org, etc.) — see <a href="#redirects">Redirect Pool</a>.</p>
+
+      <hr>
+
+      <h3>The lore — what it's about</h3>
+      <p><strong>Saturn</strong> — black cube, time, harvest, demiurge; "square things" everywhere (monitors, phones, chips). <strong>Hyperion</strong> password = Saturn <em>before</em> Grim Reaper branding.</p>
+      <p><strong>Worlds.com</strong> — old 3D platform, "ghosts in the machine," Google board member Thomas Duterme (2008).</p>
+      <p><strong>Book of the Key and the Lock</strong> — I Ching macguffin; Book = key, lock = you. TempleOS / Terry Davis as comprehension hint.</p>
+      <p><strong>False Prophet</strong> — site author; newsletters mixing real occult history, satire, and puzzle gates.</p>
+
+      <div class="primer-summary">
+        <strong>One sentence:</strong> An occult-themed Flash maze using passwords and keys to gate content, leading toward the Book, while DISK001 argues Saturn worship, virtual worlds, and esoteric tradition connect if you ask the right questions.
+      </div>
+
+      <h3>Where to go next</h3>
+      <p>If you just downloaded the archive and don't know where to start, go to the <a href="#walkthrough">Full Walkthrough</a> — it starts at "you have DISK001.rar" and walks you through extract → open → play → investigate, step by step.</p>
+
+      <h3>What it is not</h3>
+      <div class="primer-not">
+        <ul>
+          <li>Not one solved conspiracy with a single official ending</li>
+          <li>Not one password for everything — many are per-screen Flash gates</li>
+          <li>Not brute-force territory — RAR passwords are wordplay from folders and thread</li>
+        </ul>
+        <p>Closer to <strong>art project + scavenger hunt + /x/ rabbit hole</strong> than a corporate ARG with a prize.</p>
+      </div>
+
+      <p style="margin-top:1.5rem;margin-bottom:0;color:var(--muted);font-size:0.85rem;">↓ New here? Start with the <a href="#walkthrough" style="color:var(--cyan)">Full Walkthrough</a>. Reference sections below: Easter eggs, redirects, passwords, routes, file paths.</p>
+    </section>
+
+    <nav>
+      <a href="#start">Overview</a>
+      <a href="#walkthrough">Walkthrough</a>
+      <a href="#easter-eggs">Easter Eggs</a>
+      <a href="#redirects">Redirects</a>
+      <a href="#rar">RAR Keys</a>
+      <a href="#swf">SWF Login</a>
+      <a href="#creds">All Creds</a>
+      <a href="#route">Key Route</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#book">The Book</a>
+      <a href="#worlds">Worlds.com</a>
+      <a href="#saturn">Saturn</a>
+      <a href="#paths">File Paths</a>
+      <a href="#links">Key Links</a>
+    </nav>
+
+    <!-- FULL WALKTHROUGH -->
+    <section id="walkthrough">
+      <h2>Full Walkthrough — From Download to First Discoveries</h2>
+      <p>This section assumes you just got <strong>DISK001</strong> and have never touched Flash decompilers, ActionScript, or ARG tooling. Follow the phases in order. Each step says <em>what to do</em>, <em>what you'll see</em>, and <em>where to go next</em>.</p>
+
+      <div class="card highlight">
+        <p><strong>Two ways through this archive:</strong></p>
+        <ul style="margin:0.5rem 0 0 1.25rem">
+          <li><strong>Experience path</strong> — extract, open the Flash files, click around (Steps 1–7). Best if you want the vibe.</li>
+          <li><strong>Investigation path</strong> — same steps, but when you're stuck, use this page's password tables and the optional script folder (Steps 8–14). Best if you want answers without guessing for hours.</li>
+        </ul>
+      </div>
+
+      <!-- PHASE 1 -->
+      <div class="walk-phase">
+        <div class="walk-phase-title">Phase 1 — You have the download</div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">1</div>
+          <div>
+            <h4>Extract DISK001</h4>
+            <p>You should have a file called something like <code>DISK001.rar</code> (or a zip). Right-click → <strong>Extract Here</strong>.</p>
+            <p>Use <a href="https://www.7-zip.org/" target="_blank" rel="noopener">7-Zip</a> (free) or WinRAR. You do <em>not</em> need a password for the outer archive.</p>
+            <div class="walk-find"><strong>You get:</strong> a folder called <code>DISK001</code> with a bunch of files inside — PDFs, videos, nested <code>.rar</code> files, and this HTML page.</div>
+            <p class="walk-next"><strong>Next →</strong> Step 2: orient yourself inside the folder.</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">2</div>
+          <div>
+            <h4>Open this page + Read.txt</h4>
+            <p>Double-click <code>HvyHx's Grimoire page on DISK001.html</code> (this file) in your browser. Bookmark it — it's your map.</p>
+            <p>Also open <code>Read.txt</code> in Notepad. It mentions Worlds.com and a zip called <code>Knowledge for those with the keys.zip</code> that needs a key from an in-game contact. That's a <em>side quest</em> — ignore it until you've done the main FalseProphet path.</p>
+            <div class="walk-find"><strong>What matters now:</strong> the big nested archive <code>FalseProphet-HQ.rar</code> and the folder <code>RELATED\</code> (extra lore + another locked archive).</div>
+            <p class="walk-next"><strong>Next →</strong> Step 3: unlock the main game archive.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="walk-phase">
+        <div class="walk-phase-title">Phase 2 — Unlock the nested archives</div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">3</div>
+          <div>
+            <h4>Extract FalseProphet-HQ.rar</h4>
+            <p>Right-click <code>DISK001\FalseProphet-HQ.rar</code> → Extract. It will ask for a password.</p>
+            <div class="walk-find"><strong>Password:</strong> <code>Hyperion</code> (capital H, rest lowercase). Click any password chip on this page to copy.</div>
+            <p><strong>Why that word?</strong> There's a poem folder at <code>DISK001\RELATED\Poems\Hyperion\</code> — Keats' poem where Saturn appears as a fallen king, before he became the Grim Reaper in pop culture. The /x/ thread confirmed this clue.</p>
+            <div class="walk-find"><strong>You get:</strong> a folder full of <code>.swf</code> files — that's the FalseProphet website, saved offline. Hundreds of Flash "pages."</div>
+            <p class="walk-next"><strong>Next →</strong> Step 4: understand what a .swf file is.</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">4</div>
+          <div>
+            <h4>What is a .swf file? (30-second version)</h4>
+            <p><code>.swf</code> = <strong>Shockwave Flash</strong>. Old web format (2000s–2010s). Each file on falseprophet-hq.com was one Flash animation/page — not a normal HTML website.</p>
+            <p>Think of each <code>issue1.swf</code>, <code>login.swf</code>, <code>room666.swf</code> as a <strong>single screen</strong> on the old site. Click buttons inside → jump to another <code>.swf</code>. Type passwords in text boxes → unlock the next screen.</p>
+            <p>Flash is dead in browsers now. You need a viewer (Step 5).</p>
+            <p class="walk-next"><strong>Next →</strong> Step 5: install something to open them.</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">5</div>
+          <div>
+            <h4>Pick a viewer (choose one)</h4>
+            <div class="tool-grid">
+              <div class="tool-card">
+                <div class="tool-name">JPEXS FFDec (recommended)</div>
+                Free. Opens <code>.swf</code>, lets you <strong>play</strong> it in a window and read the code behind it. Download: <a href="https://www.free-decompiler.com/flash/download/" target="_blank" rel="noopener">free-decompiler.com/flash</a>
+              </div>
+              <div class="tool-card">
+                <div class="tool-name">Ruffle</div>
+                Flash emulator. Good for playback in browser or desktop. <a href="https://ruffle.rs/" target="_blank" rel="noopener">ruffle.rs</a>
+              </div>
+              <div class="tool-card">
+                <div class="tool-name">Flash Player Projector</div>
+                Legacy standalone player (archived). Works for simple playback if you can find a safe copy.
+              </div>
+            </div>
+            <p><strong>Easiest start:</strong> install FFDec → File → Open → pick a <code>.swf</code> → hit the ▶ play button in the preview pane.</p>
+            <p class="walk-next"><strong>Next →</strong> Step 6: open the front door of the site.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="walk-phase">
+        <div class="walk-phase-title">Phase 3 — Play through the front door (Experience path)</div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">6</div>
+          <div>
+            <h4>Open login.swf — the site entrance</h4>
+            <p>In your extracted FalseProphet folder, find <code>login.swf</code>. Open it in FFDec and press Play.</p>
+            <p>You'll see a <strong>countdown timer</strong> and a password box. The site originally counted down to December 7, 2018.</p>
+            <div class="walk-find"><strong>Password:</strong> <code>oneeyedjack</code> — Twin Peaks reference ("Who killed Laura Palmer?"). Wrong answers send you to random cursed websites (Time Cube, etc.).</div>
+            <p>After the correct password, you get buttons linking to <strong>issue1</strong>, <strong>issue2</strong>, etc. — the False Prophet newsletters.</p>
+            <p class="walk-next"><strong>Next →</strong> Step 7: poke around one issue, then find the hub.</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">7</div>
+          <div>
+            <h4>Skim issue1.swf, then open room666.swf</h4>
+            <p><strong>issue1.swf</strong> — click around. It's a newsletter collage: art links, deviantart, internal routes, horror vibes. Not every click is a puzzle; a lot is atmosphere and lore.</p>
+            <p><strong>room666.swf</strong> — the <strong>hub</strong>. Buttons link to numbered rooms (room15, room51, room16, room61…) and places like <code>darkmirror</code>. OP called this the "tenet of reversals" — room15 mirrors room51, etc.</p>
+            <div class="walk-find"><strong>You've now seen:</strong> login gate → newsletter issues → room hub. That's the skeleton of the whole site.</div>
+            <p class="walk-next"><strong>Next →</strong> Phase 4 if you want to go deeper without guessing passwords.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4 -->
+      <div class="walk-phase">
+        <div class="walk-phase-title">Phase 4 — Optional: the occult library</div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">8</div>
+          <div>
+            <h4>Extract RELATED\Books.rar (optional but worth it)</h4>
+            <p>Path: <code>DISK001\RELATED\Books.rar</code>. Password: <code>Therion</code> — Crowley's magickal name (not "the beast").</p>
+            <div class="walk-find"><strong>You get:</strong> ~66 PDFs and EPUBs — Necronomicon, Abramelin, Crowley, Lovecraft, Saturn occult texts. Background reading, not a linear quest log.</div>
+            <p class="walk-next"><strong>Next →</strong> Phase 5 — investigation path using pre-dumped scripts (if your copy includes them).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 5 -->
+      <div class="walk-phase">
+        <div class="walk-phase-title">Phase 5 — Investigation path (read the cheat sheet)</div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">9</div>
+          <div>
+            <h4>What is _swf_scripts_all? (don't panic)</h4>
+            <p>If your DISK001 copy includes a folder called <code>_swf_scripts_all</code>, that is <strong>not part of the original game</strong>. Someone ran every <code>.swf</code> through FFDec and exported the hidden code to text files — a pre-made cheat sheet so you don't have to decompile 200+ files yourself.</p>
+            <p><strong>You do NOT read all 10,000 files.</strong> You only open specific folders when this walkthrough tells you to.</p>
+            <p>Folder naming is simple: <code>_swf_scripts_all\login.swf\</code> = the code extracted from <code>login.swf</code>.</p>
+            <details class="walk-advanced">
+              <summary>Advanced — if your copy does NOT include _swf_scripts_all</summary>
+              <p>Install FFDec → select all <code>.swf</code> files in the FalseProphet folder → File → Export → Export all scripts. You'll get a similar tree. Or skip decompiling entirely and use the password tables on this page while playing the SWFs visually.</p>
+            </details>
+            <p class="walk-next"><strong>Next →</strong> Step 10: your first script read (login password proof).</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">10</div>
+          <div>
+            <h4>Stop A — confirm the login password in the code</h4>
+            <p>Open this file in Notepad (or VS Code):</p>
+            <p><code>DISK001\_swf_scripts_all\login.swf\scripts\index_fla\MainTimeline.as</code></p>
+            <p>Press Ctrl+F and search for <code>myPassword</code>.</p>
+            <div class="walk-find"><strong>You'll find:</strong> <code>this.myPassword = "oneeyedjack";</code> — proof the password isn't a guess; it's hardcoded in the Flash file.</div>
+            <p>Same file: search <code>addPages</code> to see the list of troll URLs you get sent to on wrong answers.</p>
+            <p class="walk-next"><strong>Next →</strong> Stop B: the room hub links.</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">11</div>
+          <div>
+            <h4>Stop B — room666 is a link menu</h4>
+            <p>Go to folder: <code>_swf_scripts_all\room666.swf\scripts\</code></p>
+            <p>Search (Ctrl+F in your file explorer, or open files) for <code>getUrl</code> or <code>falseprophet-hq.com</code>.</p>
+            <div class="walk-find"><strong>You'll find lines like:</strong> <code>getUrl("http://www.falseprophet-hq.com/room15", "_self");</code> — each button on the hub screen and where it goes.</div>
+            <p class="walk-next"><strong>Next →</strong> Stop C: the key progression (most important).</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">12</div>
+          <div>
+            <h4>Stop C — the key ladder on index.swf</h4>
+            <p>Open:</p>
+            <p><code>_swf_scripts_all\WayBack Machine\frontpage\index.swf\scripts\frame_1\DoAction.as</code></p>
+            <p>(There are duplicate copies by year — any <code>frontpage\index.swf</code> copy works.)</p>
+            <div class="walk-find">
+              <strong>Unlock chain:</strong><br>
+              Type <code>silverkey</code> → goes to <code>/level1</code><br>
+              Type <code>goldkey</code> → goes to <code>/abyss</code><br>
+              Type <code>highkey</code> + password <code>lowkey</code> → unlocks next section<br>
+              Type <code>rainbowkey</code> → goes to <code>/archive</code><br>
+              Wrong input → random URL from the <code>links[]</code> array
+            </div>
+            <p>Also search this folder for <code>yellowbrickroad</code>, <code>whentheycomeback</code>, <code>necropolis</code> — Twin Peaks and Oz unlock phrases.</p>
+            <p class="walk-next"><strong>Next →</strong> Stop D: hidden clue in a minigame.</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">13</div>
+          <div>
+            <h4>Stop D — issue2-level1 hides "INKEY"</h4>
+            <p>Open:</p>
+            <p><code>_swf_scripts_all\issue2-level1.swf\scripts\DefineSprite_81\frame_2\DoAction.as</code></p>
+            <p>Search for <code>INKEY</code>.</p>
+            <div class="walk-find"><strong>You'll find:</strong> a Pac-Man animation that ends with <code>GK.kval = "\"INKEY\"";</code> — a hidden string hinting at the silver key puzzle. Keys aren't always in login boxes; sometimes they're buried in animations.</div>
+            <p class="walk-next"><strong>Next →</strong> Stop E: the Book gate.</p>
+          </div>
+        </div>
+
+        <div class="walk-step">
+          <div class="walk-step-num">14</div>
+          <div>
+            <h4>Stop E — Book of the Key and the Lock</h4>
+            <p>Open:</p>
+            <p><code>_swf_scripts_all\issue9-level4.swf\scripts\index_fla\MainTimeline.as</code></p>
+            <div class="walk-find"><strong>You'll find:</strong> a button that opens <code>blacklaboratory.bigcartel.com/.../the-book-of-the-key-and-the-lock</code> — a merch page (dead now). Lore-wise: the Book = I Ching = the Key; the Lock = you / your cage.</div>
+            <p>Final countdown screen: open <code>issueX-level19.swf\...\MainTimeline.as</code>, search <code>myPassword</code> → <code>maskofspace</code>.</p>
+            <p>Second login tier: <code>login-level2.swf</code> → <code>masterkey</code>.</p>
+            <p class="walk-next"><strong>Next →</strong> Use the reference sections below for all 28 passwords, easter eggs, and file paths.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 6 -->
+      <div class="walk-phase">
+        <div class="walk-phase-title">Phase 6 — How to search without going insane</div>
+
+        <div class="card">
+          <p>When you have a specific question, <strong>search first, read second</strong>. Don't browse folders alphabetically.</p>
+          <h3 style="margin-top:0.5rem">In File Explorer (whole DISK001 folder)</h3>
+          <p>Windows: select the <code>DISK001</code> folder → search box → type a keyword like <code>saturncult</code> or <code>bigcartel</code>. Jump straight to the file that mentions it.</p>
+          <h3>Inside one SWF's script folder</h3>
+          <p>Open Notepad++, VS Code, or even Notepad → Find in Files → search for:</p>
+          <ul style="margin:0 0 0.5rem 1.25rem">
+            <li><code>myPassword</code> — gate passwords</li>
+            <li><code>getUrl</code> or <code>navigateToURL</code> — where clicks go</li>
+            <li><code>== "</code> — text comparisons / unlock checks</li>
+          </ul>
+          <h3>Files you can safely ignore</h3>
+          <p>Anything named <code>ScrollThumb</code>, <code>ScrollArrow</code>, or inside <code>fl\controls\</code> — that's Adobe Flash UI junk, not game content. Ignore the entire <code>WayBack Machine\</code> tree until you need a specific historical copy.</p>
+        </div>
+
+        <div class="card highlight">
+          <p><strong>Suggested order for a first full pass:</strong></p>
+          <div class="flow">
+            <span class="flow-step">Extract DISK001</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">Extract FalseProphet-HQ.rar<br><code>Hyperion</code></span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">Play login.swf<br><code>oneeyedjack</code></span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">Skim issue1 + room666</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">Read index.swf keys</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step">Book gate + RELATED lore</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EASTER EGGS -->
+    <section id="easter-eggs">
+      <h2>Easter Eggs &amp; Red Herrings</h2>
+      <p>Curated finds from decompiled SWFs, extracted archives, and the /x/ thread. Not every joke is a clue — OP said many red herrings still connect if you zoom out.</p>
+
+      <div class="egg-grid">
+        <div class="egg-card">
+          <h3><span class="tag tag-egg">Twin Peaks</span> The Black Lodge Trail</h3>
+          <ul>
+            <li>Login password <code>oneeyedjack</code></li>
+            <li>Phrases: <code>whentheycomeback</code>, <code>whenstarsare</code>, <code>theywillreturn</code>, <code>hopesturntoblack</code>, <code>choose</code>, <code>six</code></li>
+            <li><code>snowhereman</code> / <code>sallysnow</code> — internal frames</li>
+            <li><code>twinpeaks.swf</code> + welcometotwinpeaks.com/countdown</li>
+          </ul>
+          <div class="egg-src">login.swf · index.swf · twinpeaks.swf</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-egg">Oz / Keys</span> Follow the Yellow Brick Road</h3>
+          <ul>
+            <li><code>yellowbrickroad</code>, <code>redbrickroad</code>, <code>illumination</code></li>
+            <li>Key ladder: silver → gold → high/low → red/rainbow</li>
+            <li>issue2-level1: "find the silver key" + hidden <code>"INKEY"</code> string</li>
+            <li>Pac-Man scores link: neave.com/cgi-bin/pacmanscores.pl</li>
+          </ul>
+          <div class="egg-src">index.swf · issue2-level1.swf · issue12-level1.swf</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-egg">Saturn / Occult</span> Cube &amp; Cronus</h3>
+          <ul>
+            <li>RAR password <code>Hyperion</code> from Poems folder</li>
+            <li><code>/saturncult/</code> route in issue13</li>
+            <li>Greater Ritual of Hex I — Saturn (rahoorkhuit.net)</li>
+            <li><code>cubo.cc</code>, <code>timecube.com</code> in redirect pool</li>
+            <li>Thread: Ilda-Baoth / Yaldabaoth before "evil Saturn"</li>
+          </ul>
+          <div class="egg-src">RELATED\Poems · issue13.swf · thread >>23698749</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-troll">Troll</span> Wrong-Answer Roulette</h3>
+          <ul>
+            <li>Failed login/key → random URL from redirect pool</li>
+            <li>Time Cube, Jodi.org, 973-eht-namuh-973, wrongbrowser.com</li>
+            <li>fallingfalling.com, superbad.com (listed multiple times)</li>
+            <li>frankpr.it + talktofrank "scary stuff" pairing</li>
+            <li>thisisnotapuzzle.com</li>
+          </ul>
+          <div class="egg-src">login.swf · issue12 DoAction.as links[] array</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-egg">Lovecraft / Horror</span> Necronomicon Trail</h3>
+          <ul>
+            <li>Newsletter cites Sam Raimi Necronomicon (Evil Dead) as "subtle clue"</li>
+            <li><code>abyss.swf</code>, <code>necropolis</code> unlock</li>
+            <li>Books.rar: Necronomicon, Lovecraft, Abramelin PDFs</li>
+            <li>Scribd: False Prophet — Tempel Ov Blood journal</li>
+            <li>coolstorybro → "Yours in Murder Mr Monster" merch</li>
+          </ul>
+          <div class="egg-src">issue1.swf · Books_extracted · coolstorybro.swf</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-egg">Worlds.com</span> Ghosts in the Machine</h3>
+          <ul>
+            <li><code>IP Not Recognized/</code> SWFs: conspiracy, bunker, pinkfreud, finance, binroom, philosophy, rumourmills</li>
+            <li>Thomas Duterme — Google, May 2008 board (real press release)</li>
+            <li>Bernard Stolar — AdScape → Google</li>
+            <li>Thread: Nexialist, computers as portals to existing worlds</li>
+          </ul>
+          <div class="egg-src">FalseProphet-HQ\IP Not Recognized\ · Worlds 2008\</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-meta">Meta</span> Fourth Wall &amp; Dates</h3>
+          <ul>
+            <li>Login countdown target: <strong>2018-12-07</strong> (login.swf)</li>
+            <li>UFO button → random redirect from pool</li>
+            <li><code>maskofspace</code> on final countdown screen</li>
+            <li>Wayback Machine index.swf copies differ by year/frame</li>
+            <li>Thread: broken RAR complaints — some dumps may be incomplete</li>
+            <li>OP: "red herrings" that still relate when zoomed out</li>
+          </ul>
+          <div class="egg-src">login.swf · issueX-level19.swf · WayBack Machine\</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-dead">Dead Ends</span> Merch &amp; Offline Gates</h3>
+          <ul>
+            <li>blacklaboratory.bigcartel.com — Book of the Key and the Lock (404)</li>
+            <li>falseprophet-hq.com — offline; Wayback partial</li>
+            <li>portal.jpg — gates of the Book (thread reference)</li>
+            <li>Onion/Tor links hinted in thread, not fully archived in dump</li>
+          </ul>
+          <div class="egg-src">issue9-level4.swf · issueX-level18.swf · thread >>23718207</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-egg">Meme / Pop</span> Issue Content</h3>
+          <ul>
+            <li><code>babeyedeers-hellshost.swf</code>, <code>coolstorybro.swf</code></li>
+            <li><code>darkmirror</code> / <code>darkmirror2</code> / <code>darkmirror3</code></li>
+            <li>cosmic-onion-ring.deviantart.com (onion = Tor hint?)</li>
+            <li>Alice.pdf via bosonbooks in issue12 link list</li>
+            <li>Newsletter satire: Facebook, CISPA, "Old Ones between the spaces"</li>
+          </ul>
+          <div class="egg-src">issue*.swf · issue7.swf · issue12-level1.swf</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-lore">Thread-Only</span> Not in the RAR</h3>
+          <ul>
+            <li>Agent 666 = Crowley → password <code>Therion</code></li>
+            <li>Morodloeth anagram — UndertheSilverLake reddit post</li>
+            <li>"Sega Saturn?" anon joke (>>23713133)</li>
+            <li>I Ching 256/512 = hard drive numerology</li>
+            <li>C-Lock / time wordplay (>>23713009)</li>
+            <li>973-eht-namuh-973 asked explicitly in thread</li>
+          </ul>
+          <div class="egg-src">/x/ #23689991 · archive.4plebs.org</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-egg">Named SWFs</span> Worth Opening</h3>
+          <ul>
+            <li><code>room666.swf</code> — hub (all room links)</li>
+            <li><code>abyss.swf</code> — long multi-frame journey</li>
+            <li><code>level1-0</code> through <code>level3.swf</code> — side paths</li>
+            <li><code>saturncult</code>, <code>archive</code>, <code>puzzle</code> routes</li>
+            <li><code>WayBack Machine\</code> — site evolution 2013–2019</li>
+          </ul>
+          <div class="egg-src">FalseProphet-HQ_extracted\FalseProphet-HQ\</div>
+        </div>
+
+        <div class="egg-card">
+          <h3><span class="tag tag-lore">TempleOS / Book</span> OP Lore Hints</h3>
+          <ul>
+            <li>Book = key, lock = your cage — see before you escape</li>
+            <li>Terry Davis / TempleOS — "not crazy," understood magic</li>
+            <li>I Ching = Book of Sun and Moon = Key and Lock</li>
+            <li>Simulation in a simulation (>>23694541)</li>
+            <li>Ghosts in machines / AI as aspects of non-digital force</li>
+          </ul>
+          <div class="egg-src">thread >>23714274 · >>23729028 · >>23729460</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REDIRECT POOL -->
+    <section id="redirects">
+      <h2>Wrong-Answer Redirect Pool</h2>
+      <p>When you fail a password or key check, many SWFs send you to a <strong>random URL</strong> from this pool (assembled from login.swf and issue DoAction scripts). Deliberate atmosphere + troll.</p>
+      <input type="text" class="search-box" id="redirectSearch" placeholder="Filter redirect URLs…">
+      <div class="redirect-list" id="redirectList"></div>
+    </section>
+
+    <p class="section-divider">Technical Reference</p>
+
+    <!-- RAR PASSWORDS -->
+    <section id="rar">
+      <h2>Archive Passwords</h2>
+      <div class="pw-grid">
+        <div class="pw-item">
+          <div class="label"><span class="tag tag-rar">RAR</span> FalseProphet-HQ.rar</div>
+          <div class="value" data-copy="Hyperion">Hyperion</div>
+          <div class="note">Case-sensitive. Answer lives in <code>RELATED\Poems\Hyperion</code> — Keats' poem of fallen Saturn before the Chronos/Grim Reaper conflation. Thread post >>23706669.</div>
+        </div>
+        <div class="pw-item">
+          <div class="label"><span class="tag tag-rar">RAR</span> Books.rar</div>
+          <div class="value" data-copy="Therion">Therion</div>
+          <div class="note">Crowley's magickal name — NOT "the beast", NOT "Aleister Crowley". Confirmed >>23730180.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SWF LOGIN PASSWORDS -->
+    <section id="swf">
+      <h2>SWF Screen Passwords</h2>
+      <p>Stored in plaintext ActionScript inside countdown/login screens. Decompile with <a href="https://www.free-decompiler.com/flash/" target="_blank" rel="noopener">JPEXS FFDec</a> or read exported <code>.as</code> files.</p>
+      <div class="pw-grid">
+        <div class="pw-item">
+          <div class="label"><span class="tag tag-swf">SWF</span> login.swf</div>
+          <div class="value" data-copy="oneeyedjack">oneeyedjack</div>
+          <div class="note">Twin Peaks — "Who killed Laura Palmer?" First screen visitors saw. Unlocks issue navigation hub.</div>
+        </div>
+        <div class="pw-item">
+          <div class="label"><span class="tag tag-swf">SWF</span> login-level2.swf</div>
+          <div class="value" data-copy="masterkey">masterkey</div>
+          <div class="note">Second login tier. Links to issueX/level19 countdown.</div>
+        </div>
+        <div class="pw-item">
+          <div class="label"><span class="tag tag-swf">SWF</span> issueX-level19.swf</div>
+          <div class="value" data-copy="maskofspace">maskofspace</div>
+          <div class="note">Final countdown screen password.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALL CREDENTIALS -->
+    <section id="creds">
+      <h2>All 28 Decompiled Credentials</h2>
+      <p>Every password and unlock phrase found in the Flash files. Extracted from <code>_swf_scripts_all</code> (see <a href="#walkthrough">Walkthrough Step 9</a>). Click any chip to copy.</p>
+      <input type="text" class="search-box" id="credSearch" placeholder="Filter credentials…">
+      <div class="cred-list" id="credList"></div>
+
+      <h3>Username / Password Pairs</h3>
+      <table>
+        <thead><tr><th>Username</th><th>Password</th><th>Unlocks</th></tr></thead>
+        <tbody>
+          <tr><td><code>highkey</code></td><td><code>lowkey</code></td><td><code>falseprophet-hq.com/archive</code></td></tr>
+          <tr><td><code>silverkey</code></td><td>—</td><td><code>falseprophet-hq.com/level1</code></td></tr>
+          <tr><td><code>goldkey</code></td><td>—</td><td><code>falseprophet-hq.com/abyss</code></td></tr>
+          <tr><td><code>redkey</code></td><td>—</td><td>Various index.swf frames</td></tr>
+          <tr><td>—</td><td><code>rainbowkey</code></td><td>Index frame unlock</td></tr>
+          <tr><td><code>snowhereman</code></td><td>—</td><td>Internal frame "snowhere"</td></tr>
+          <tr><td><code>sallysnow</code></td><td>—</td><td>Internal frame "ss"</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Single-Field Unlocks (enter as username)</h3>
+      <table>
+        <thead><tr><th>Input</th><th>Context</th></tr></thead>
+        <tbody>
+          <tr><td><code>insiderstones</code></td><td>issue1-level3</td></tr>
+          <tr><td><code>illumination</code></td><td>index.swf — Wizard of Oz path</td></tr>
+          <tr><td><code>yellowbrickroad</code></td><td>index.swf</td></tr>
+          <tr><td><code>redbrickroad</code></td><td>index.swf</td></tr>
+          <tr><td><code>necropolis</code></td><td>index.swf</td></tr>
+          <tr><td><code>newmoon</code></td><td>index.swf</td></tr>
+          <tr><td><code>selectweapon</code></td><td>index.swf</td></tr>
+          <tr><td><code>whentheycomeback</code></td><td>index.swf — Twin Peaks phrases</td></tr>
+          <tr><td><code>whenstarsare</code></td><td>index.swf</td></tr>
+          <tr><td><code>theywillreturn</code></td><td>index.swf</td></tr>
+          <tr><td><code>hopesturntoblack</code></td><td>index.swf</td></tr>
+          <tr><td><code>choose</code></td><td>index.swf</td></tr>
+          <tr><td><code>six</code></td><td>index.swf</td></tr>
+          <tr><td><code>mind-spiders</code></td><td>Issue SWF</td></tr>
+          <tr><td><code>level1</code></td><td>Issue SWF</td></tr>
+          <tr><td><code>man</code></td><td>Issue SWF</td></tr>
+          <tr><td><code>right</code></td><td>Issue SWF</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- WALK ROUTE -->
+    <section id="route">
+      <h2>Key Progression Route</h2>
+      <p>Quick reference for the unlock chain. For step-by-step setup from a fresh download, see the <a href="#walkthrough">Full Walkthrough</a> first.</p>
+      <div class="card highlight">
+        <p>Shortcut for investigators — read the decompiled scripts at the stops listed in Walkthrough Phase 5, or use the password tables below while playing the SWFs in FFDec.</p>
+        <div class="flow">
+          <span class="flow-step">login.swf<br><code>oneeyedjack</code></span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">login-level2.swf<br><code>masterkey</code></span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">room666.swf<br><em>hub</em></span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">issue1 → issue18<br>+ issueX</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">Book gates</span>
+        </div>
+      </div>
+      <h3>Issue Order</h3>
+      <p>Go through numbered issues <strong>1–18</strong> plus <strong>issueX</strong> (levels 18 & 19). Each issue has sub-levels (level1, level2, etc.) — follow filenames in the extracted archive.</p>
+      <h3>Key Progression (from issue12 / index.swf)</h3>
+      <div class="flow">
+        <span class="flow-step"><code>silverkey</code></span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step"><code>goldkey</code></span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step"><code>highkey</code> + <code>lowkey</code></span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step"><code>rainbowkey</code> / <code>redkey</code></span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">Archive / Abyss / Book</span>
+      </div>
+    </section>
+
+    <!-- ROOMS -->
+    <section id="rooms">
+      <h2>Room Structure & Reversals</h2>
+      <p>First six rooms are <strong>reversals</strong> of each other. room666 is the hub connecting all rooms. OP: "tenet of reversals."</p>
+      <div class="room-hub">
+        <div class="room-cell pair">room15 ↔ room51</div>
+        <div class="room-cell hub">room666</div>
+        <div class="room-cell pair">room16 ↔ room61</div>
+        <div class="room-cell pair">room17 ↔ room71</div>
+        <div class="room-cell">room1<br><small>related group</small></div>
+        <div class="room-cell">darkmirror</div>
+      </div>
+      <h3>room666.swf Links</h3>
+      <table>
+        <thead><tr><th>Destination</th></tr></thead>
+        <tbody>
+          <tr><td><code>/room15</code> · <code>/room16</code> · <code>/room51</code> · <code>/room61</code> · <code>/room71</code> · <code>/room666</code></td></tr>
+          <tr><td><code>/darkmirror</code> · <code>/issue9/level3</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- THE BOOK -->
+    <section id="book">
+      <h2>Book of the Key and the Lock</h2>
+      <div class="card">
+        <p><span class="tag tag-lore">LORE</span> I Ching aka <em>The Book of Changes</em> aka <em>The Book of the Sun and the Moon</em> aka <strong>The Book of the Key and the Lock</strong>.</p>
+        <div class="quote">"Think of the Book as a key. What is the lock? You need to be able to SEE your cage before you can escape it." — OP, >>23714274</div>
+        <p>Multiple puzzle routes lead to the gates of the Book. Terry Davis / TempleOS is the fast-path hint for comprehending it.</p>
+      </div>
+      <h3>SWF References</h3>
+      <table>
+        <thead><tr><th>File</th><th>Link / Action</th></tr></thead>
+        <tbody>
+          <tr><td><code>issue9-level4.swf</code></td><td><a href="http://blacklaboratory.bigcartel.com/product/the-book-of-the-key-and-the-lock" target="_blank" rel="noopener">blacklaboratory.bigcartel.com/.../the-book-of-the-key-and-the-lock</a> (dead)</td></tr>
+          <tr><td><code>issue13.swf</code></td><td><code>falseprophet-hq.com/saturncult/</code></td></tr>
+          <tr><td><code>issueX-level18.swf</code></td><td>blacklaboratory.bigcartel.com/products</td></tr>
+          <tr><td><code>coolstorybro.swf</code></td><td>blacklaboratory — "Yours in Murder Mr Monster"</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- WORLDS.COM -->
+    <section id="worlds">
+      <h2>Worlds.com — 2008 Board Member</h2>
+      <div class="card highlight">
+        <h3 style="margin-top:0;color:var(--gold)">Thomas Duterme</h3>
+        <p>Google <strong>New Business Development Manager</strong>. Appointed <strong>non-executive board member</strong> of Worlds.com, <strong>May 19, 2008</strong>.</p>
+        <p>Press release archived at:<br>
+        <code>RELATED\Worlds 3D\Worlds Website\Version 1 - 3D ENTER conTAIN MENT PORTAL\Worlds 2008\3\TomDutermeWorldsBoardMember-05-19-08.html</code></p>
+      </div>
+      <p>Also on board: <strong>Bernard Stolar</strong> (sold AdScape to Google), Robert Fireman, Jay Coleman. Thread speculation: Google vetting Worlds' 3D patents / virtual world tech. Nexialist remains an accessible Worlds.com ghost-in-the-machine contact per OP.</p>
+    </section>
+
+    <!-- SATURN -->
+    <section id="saturn">
+      <h2>Saturn Clue — Hyperion</h2>
+      <div class="card">
+        <p><strong>Question (>>23706669):</strong> Who was Saturn before he was known as Chronos/Grim Reaper?</p>
+        <p><strong>Answer:</strong> <code>Hyperion</code> — not as mythology trivia, but as the <em>folder name</em> in Poems containing Keats' <em>Hyperion</em>, where Saturn appears as a fallen Golden Age king:</p>
+        <div class="quote">"Of peaceful sway above man's harvesting… Saturn must be King."</div>
+        <p>Before Chronos (Time) and Cronus (Titan) were conflated into the scythe-wielding Grim Reaper, Saturn was the agricultural deity of plenty. Gnostic thread also mentions Ilda-Baoth / Yaldabaoth as the corrupted form.</p>
+        <p><strong>Square things clue:</strong> monitors, phones, TVs, books, chips, dice, windows, black boxes — Saturn's cube. "How many square objects before you realize you're in Saturn's turf?"</p>
+      </div>
+    </section>
+
+    <!-- FILE PATHS -->
+    <section id="paths">
+      <h2>Local File Paths (DISK001)</h2>
+      <p>After extracting <code>DISK001.rar</code> and the nested archives, your folder should look like this. Names may vary slightly depending on where 7-Zip puts the FalseProphet extract.</p>
+      <table>
+        <thead><tr><th>What</th><th>Path</th></tr></thead>
+        <tbody>
+          <tr><td>This guide</td><td><code>DISK001\HvyHx's Grimoire page on DISK001.html</code></td></tr>
+          <tr><td>Start here note</td><td><code>DISK001\Read.txt</code></td></tr>
+          <tr><td>Main game (locked)</td><td><code>DISK001\FalseProphet-HQ.rar</code> → password <code>Hyperion</code></td></tr>
+          <tr><td>Main game (extracted)</td><td><code>DISK001\FalseProphet-HQ_extracted\FalseProphet-HQ\</code> — all the <code>.swf</code> files</td></tr>
+          <tr><td>Decompiled scripts (cheat sheet)</td><td><code>DISK001\_swf_scripts_all\</code></td></tr>
+          <tr><td>Occult library (locked)</td><td><code>DISK001\RELATED\Books.rar</code> → password <code>Therion</code></td></tr>
+          <tr><td>Occult library (extracted)</td><td><code>DISK001\Books_extracted\Books\</code> (66 files)</td></tr>
+          <tr><td>Hyperion poem clue</td><td><code>DISK001\RELATED\Poems\Hyperion\</code></td></tr>
+          <tr><td>Worlds.com 2008 press</td><td><code>DISK001\RELATED\Worlds 3D\Worlds Website\Version 1 - 3D ENTER conTAIN MENT PORTAL\Worlds 2008\</code></td></tr>
+          <tr><td>4chan source thread</td><td><a href="https://archive.4plebs.org/x/thread/23689991" target="_blank" rel="noopener">archive.4plebs.org/x/thread/23689991</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- KEY LINKS -->
+    <section id="links">
+      <h2>Notable External Links (from SWFs)</h2>
+      <p>Random redirect pool + deliberate puzzle links embedded in ActionScript.</p>
+      <table>
+        <thead><tr><th>URL</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><a href="http://www.timecube.com/" target="_blank" rel="noopener">timecube.com</a></td><td>Recurring redirect</td></tr>
+          <tr><td><a href="http://www.cubo.cc/" target="_blank" rel="noopener">cubo.cc</a></td><td>Black cube</td></tr>
+          <tr><td><a href="http://www.973-eht-namuh-973.com/" target="_blank" rel="noopener">973-eht-namuh-973.com</a></td><td>Humanity backwards</td></tr>
+          <tr><td><a href="http://wwwwwwwww.jodi.org" target="_blank" rel="noopener">jodi.org</a></td><td>Net art</td></tr>
+          <tr><td><a href="http://www.the-organization.com" target="_blank" rel="noopener">the-organization.com</a></td><td>—</td></tr>
+          <tr><td><a href="http://www.fearthemachine.com/" target="_blank" rel="noopener">fearthemachine.com</a></td><td>—</td></tr>
+          <tr><td><a href="http://www.rahoorkhuit.net/library/ceremonial/invoking/greater_ritual_of_the_hex_i_saturn.html" target="_blank" rel="noopener">Greater Ritual of Hex I — Saturn</a></td><td>Occult</td></tr>
+          <tr><td><a href="http://www.scribd.com/doc/46164538/False-Prophet-The-Internal-Journal-of-the-Tempel-Ov-Blood" target="_blank" rel="noopener">False Prophet — Tempel Ov Blood journal</a></td><td>Scribd</td></tr>
+          <tr><td><a href="https://welcometotwinpeaks.com/countdown/" target="_blank" rel="noopener">welcometotwinpeaks.com/countdown</a></td><td>Twin Peaks tie-in</td></tr>
+          <tr><td><a href="http://thisisnotapuzzle.com/" target="_blank" rel="noopener">thisisnotapuzzle.com</a></td><td>—</td></tr>
+          <tr><td><a href="http://wrongbrowser.com/" target="_blank" rel="noopener">wrongbrowser.com</a></td><td>Wrong browser gag</td></tr>
+        </tbody>
+      </table>
+
+      <h3>FalseProphet Internal Routes (sample)</h3>
+      <p style="font-size:0.85rem;color:var(--muted)">549 unique paths extracted. Original format: <code>http://falseprophet-hq.com/room666</code> → saved as <code>room666.swf</code></p>
+      <div class="cred-list" style="margin-top:0.75rem">
+        <span class="cred-chip" style="cursor:default">/login</span>
+        <span class="cred-chip" style="cursor:default">/login/level2</span>
+        <span class="cred-chip" style="cursor:default">/room666</span>
+        <span class="cred-chip" style="cursor:default">/room15–71</span>
+        <span class="cred-chip" style="cursor:default">/darkmirror</span>
+        <span class="cred-chip" style="cursor:default">/abyss</span>
+        <span class="cred-chip" style="cursor:default">/archive</span>
+        <span class="cred-chip" style="cursor:default">/saturncult</span>
+        <span class="cred-chip" style="cursor:default">/issue1–18</span>
+        <span class="cred-chip" style="cursor:default">/issueX/level18–19</span>
+        <span class="cred-chip" style="cursor:default">/conspiracy</span>
+        <span class="cred-chip" style="cursor:default">/bunker</span>
+        <span class="cred-chip" style="cursor:default">/binroom</span>
+        <span class="cred-chip" style="cursor:default">/pinkfreud</span>
+        <span class="cred-chip" style="cursor:default">/TwinPeaks</span>
+        <span class="cred-chip" style="cursor:default">/badeyedeers/hellshost</span>
+      </div>
+    </section>
+
+    <footer>
+      HVYHX'S GRIMOIRE · DISK001 · ASK THE RIGHT QUESTIONS
+    </footer>
+  </div>
+
+  <div class="toast" id="toast">Copied!</div>
+
+  <script>
+    const CREDS = [
+      "choose","goldkey","highkey","hopesturntoblack","illumination","insiderstones",
+      "level1","lowkey","man","maskofspace","masterkey","mind-spiders","necropolis",
+      "newmoon","oneeyedjack","rainbowkey","redbrickroad","redkey","right",
+      "sallysnow","selectweapon","silverkey","six","snowhereman","theywillreturn",
+      "whenstarsare","whentheycomeback","yellowbrickroad"
+    ];
+
+    const REDIRECTS = [
+      { url: "http://www.timecube.com/", note: "Recurring — Gene Ray cube" },
+      { url: "http://www.cubo.cc/", note: "Black cube" },
+      { url: "http://www.973-eht-namuh-973.com/", note: "Humanity backwards" },
+      { url: "http://wwwwwwwww.jodi.org", note: "Net art collective" },
+      { url: "http://www.fallingfalling.com/", note: "Endless scroll" },
+      { url: "http://www.superbad.com/", note: "Early web art" },
+      { url: "http://www.frankpr.it/", note: "Frank PR" },
+      { url: "http://www.talktofrank.com/story/scary-stuff", note: "Paired with frankpr.it" },
+      { url: "http://wrongbrowser.com/", note: "Wrong browser gag" },
+      { url: "http://en.wikipedia.org/wiki/Zodiac_Killer", note: "True crime rabbit hole" },
+      { url: "http://xxxx.winning-information.com/", note: "Spam aesthetic" },
+      { url: "http://www.illuminatiorder.info/", note: "Illuminati LARP" },
+      { url: "http://www.the-organization.com", note: "Cult vibes" },
+      { url: "http://www.lost.eu/771b5", note: "Lost ARG era" },
+      { url: "http://www.fate.com/", note: "—" },
+      { url: "http://www.fearthemachine.com/", note: "—" },
+      { url: "http://www.abovetopsecret.com/forum/thread786675/pg1l", note: "Conspiracy forum" },
+      { url: "http://www.truthism.com/", note: "Truthism" },
+      { url: "http://www.youtube.com/watch?v=0gXvVUg-VAE", note: "Embedded in issue links" },
+      { url: "http://www.bosonbooks.com/boson/oldies/Alice.pdf", note: "Alice down the rabbit hole" },
+      { url: "http://thisisnotapuzzle.com/", note: "Self-aware troll" },
+      { url: "http://www.neave.com/cgi-bin/pacmanscores.pl", note: "issue2-level1 Easter egg" },
+      { url: "http://cosmic-onion-ring.deviantart.com/gallery/", note: "Onion / Tor pun?" },
+      { url: "http://blacklaboratory.bigcartel.com/product/the-book-of-the-key-and-the-lock", note: "Book gate (dead)" },
+      { url: "https://welcometotwinpeaks.com/countdown/", note: "Twin Peaks countdown" },
+      { url: "http://www.scribd.com/doc/46164538/False-Prophet-The-Internal-Journal-of-the-Tempel-Ov-Blood", note: "Tempel Ov Blood" },
+      { url: "http://www.rahoorkhuit.net/library/ceremonial/invoking/greater_ritual_of_the_hex_i_saturn.html", note: "Saturn ritual" }
+    ];
+
+    const list = document.getElementById('credList');
+    const search = document.getElementById('credSearch');
+    const redirectList = document.getElementById('redirectList');
+    const redirectSearch = document.getElementById('redirectSearch');
+    const toast = document.getElementById('toast');
+
+    CREDS.forEach(c => {
+      const el = document.createElement('div');
+      el.className = 'cred-chip';
+      el.textContent = c;
+      el.dataset.cred = c;
+      el.addEventListener('click', () => copyText(c));
+      list.appendChild(el);
+    });
+
+    search.addEventListener('input', () => {
+      const q = search.value.toLowerCase();
+      list.querySelectorAll('.cred-chip').forEach(el => {
+        el.classList.toggle('hidden', !el.dataset.cred.includes(q));
+      });
+    });
+
+    REDIRECTS.forEach(r => {
+      const el = document.createElement('div');
+      el.className = 'redirect-item';
+      el.dataset.q = (r.url + ' ' + r.note).toLowerCase();
+      el.innerHTML = '<a href="' + r.url + '" target="_blank" rel="noopener">' + r.url.replace(/^https?:\/\//, '') + '</a><br><span style="color:var(--muted)">' + r.note + '</span>';
+      redirectList.appendChild(el);
+    });
+
+    redirectSearch.addEventListener('input', () => {
+      const q = redirectSearch.value.toLowerCase();
+      redirectList.querySelectorAll('.redirect-item').forEach(el => {
+        el.classList.toggle('hidden', !el.dataset.q.includes(q));
+      });
+    });
+
+    document.querySelectorAll('[data-copy]').forEach(el => {
+      el.addEventListener('click', () => copyText(el.dataset.copy));
+    });
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        toast.textContent = 'Copied: ' + text;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1800);
+      });
+    }
+  </script>
+</body>
+</html>
